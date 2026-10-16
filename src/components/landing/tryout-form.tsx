@@ -84,7 +84,7 @@ export function TryoutForm() {
             <Input
               id="cedula"
               name="cedula"
-              placeholder="000-0000000-0"
+              placeholder="Ej: V-12345678"
               required
               className={fieldClass}
             />
@@ -96,7 +96,7 @@ export function TryoutForm() {
             <Input
               id="birthPlace"
               name="birthPlace"
-              placeholder="Ej: Santo Domingo"
+              placeholder="Ej: Caracas, Distrito Capital"
               required
               className={fieldClass}
             />
@@ -179,7 +179,7 @@ export function TryoutForm() {
             <Input
               id="phone"
               name="phone"
-              placeholder="(809) 000-0000"
+              placeholder="(0414) 123-4567"
               required
               className={fieldClass}
             />
@@ -191,19 +191,19 @@ export function TryoutForm() {
             <Input
               id="phoneAlt"
               name="phoneAlt"
-              placeholder="(829) 000-0000"
+              placeholder="(0424) 123-4567"
               className={fieldClass}
             />
           </div>
           <div className="space-y-2 sm:col-span-2">
             <Label htmlFor="address" className={labelClass}>
-              Dirección de habitación *
+              Dirección de residencia *
             </Label>
             <Textarea
               id="address"
               name="address"
               rows={2}
-              placeholder="Calle, número, sector, ciudad"
+              placeholder="Av., calle, sector, municipio, estado"
               required
               className={textareaClass}
             />
@@ -243,7 +243,7 @@ export function TryoutForm() {
               <Input
                 id="repCedula"
                 name="repCedula"
-                placeholder="000-0000000-0"
+                placeholder="Ej: V-12345678"
                 required
                 className={fieldClass}
               />
@@ -255,7 +255,7 @@ export function TryoutForm() {
               <Input
                 id="repPhone"
                 name="repPhone"
-                placeholder="(809) 000-0000"
+                placeholder="(0414) 123-4567"
                 required
                 className={fieldClass}
               />
@@ -268,7 +268,7 @@ export function TryoutForm() {
                 id="repAddress"
                 name="repAddress"
                 rows={2}
-                placeholder="Calle, número, sector, ciudad"
+                placeholder="Av., calle, sector, municipio"
                 required
                 className={textareaClass}
               />
