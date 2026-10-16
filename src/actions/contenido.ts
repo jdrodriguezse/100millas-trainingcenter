@@ -36,6 +36,7 @@ export async function saveSiteContent(
     await prisma.$transaction(operations);
 
     revalidatePath("/");
+    revalidatePath("/tryout");
     revalidatePath("/admin/contenido");
     return { success: true, message: "Contenido actualizado correctamente." };
   } catch {

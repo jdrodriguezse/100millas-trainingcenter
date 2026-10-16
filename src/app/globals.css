@@ -56,6 +56,11 @@
   --animate-gradient: gradient-x 8s ease infinite;
   --animate-shimmer: shimmer 2.6s linear infinite;
   --animate-bounce-slow: bounce-slow 2.2s ease-in-out infinite;
+  --animate-slide-in: slide-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-gradient-pan: gradient-pan 8s ease infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
 
   @keyframes fade-up {
     from {
@@ -127,6 +132,59 @@
     }
     50% {
       transform: translateY(8px);
+    }
+  }
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(-18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    60% {
+      transform: scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes gradient-pan {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(43, 92, 255, 0.45);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(43, 92, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(43, 92, 255, 0);
     }
   }
 }
@@ -234,6 +292,23 @@
   .glass {
     background-color: color-mix(in oklab, white 6%, transparent);
     backdrop-filter: blur(12px);
+  }
+  .admin-panel-bg {
+    background-image:
+      radial-gradient(
+        48rem 48rem at -10% -10%,
+        rgba(43, 92, 255, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        40rem 40rem at 110% 20%,
+        rgba(225, 29, 46, 0.08),
+        transparent 60%
+      );
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 116, 139, 0.35) transparent;
   }
 }
 

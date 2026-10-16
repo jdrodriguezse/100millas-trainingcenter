@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Clock, MapPin, Trophy, Users, Zap } from "lucide-react";
 import { TryoutForm } from "@/components/landing/tryout-form";
+import { getSiteContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Try Out | 100 Millas Training Center",
@@ -9,7 +12,18 @@ export const metadata = {
     "Inscríbete al Try Out de 100 Millas Training Center y demuestra tu talento.",
 };
 
-export default function TryoutPage() {
+function toLines(value: string): string[] {
+  return value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+}
+
+export default async function TryoutPage() {
+  const c = await getSiteContent();
+  const evalItems = toLines(c["registro.evalItems"]);
+  const stepsItems = toLines(c["registro.stepsItems"]);
+
   return (
     <main className="min-h-dvh bg-[#04060e] text-white">
       {/* NAVBAR */}
@@ -54,27 +68,24 @@ export default function TryoutPage() {
             <Trophy className="h-8 w-8 text-white" />
           </div>
           <span className="inline-flex items-center gap-2 rounded-full border border-[#ff3b46]/40 bg-[#ff3b46]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#ff8a90]">
-            Inscripciones abiertas
+            {c["registro.badge"]}
           </span>
           <h1 className="mt-5 text-4xl font-black sm:text-5xl">
-            Participa en nuestro Try Out
+            {c["registro.title"]}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-slate-300">
-            Completa el formulario y asegura tu lugar. Nuestro equipo de
-            entrenadores evaluará tu velocidad, mecánica y fundamentos.
+            {c["registro.subtitle"]}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-300">
             <span className="inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-[#5f8bff]" /> Próxima fecha por
-              confirmar
+              <Clock className="h-4 w-4 text-[#5f8bff]" /> {c["registro.date"]}
             </span>
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-[#5f8bff]" /> Nuestras
-              instalaciones
+              <MapPin className="h-4 w-4 text-[#5f8bff]" /> {c["registro.place"]}
             </span>
             <span className="inline-flex items-center gap-2">
-              <Users className="h-4 w-4 text-[#5f8bff]" /> Cupos limitados
+              <Users className="h-4 w-4 text-[#5f8bff]" /> {c["registro.slots"]}
             </span>
           </div>
         </div>
@@ -84,9 +95,9 @@ export default function TryoutPage() {
       <section className="mx-auto grid max-w-6xl gap-10 px-6 pb-20 lg:grid-cols-5">
         <div className="lg:col-span-3">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-            <h2 className="mb-1 text-xl font-bold">Formulario de inscripción</h2>
+            <h2 className="mb-1 text-xl font-bold">{c["registro.formTitle"]}</h2>
             <p className="mb-6 text-sm text-slate-400">
-              Los campos marcados con * son obligatorios.
+              {c["registro.formNote"]}
             </p>
             <TryoutForm />
           </div>
@@ -95,36 +106,24 @@ export default function TryoutPage() {
         <div className="space-y-6 lg:col-span-2">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#2b5cff]/15 to-transparent p-6">
             <h3 className="flex items-center gap-2 text-lg font-bold">
-              <Zap className="h-5 w-5 text-[#5f8bff]" /> ¿Qué evaluamos?
+              <Zap className="h-5 w-5 text-[#5f8bff]" /> {c["registro.evalTitle"]}
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>• Velocidad de pitcheo (MPH) y mecánica.</li>
-              <li>• Control y comando en el strike zone.</li>
-              <li>• Defensa y fundamentos de la posición.</li>
-              <li>• Bateo: contacto y poder.</li>
-              <li>• Actitud, disciplina y potencial.</li>
+              {evalItems.map((item, i) => (
+                <li key={i}>• {item}</li>
+              ))}
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-            <h3 className="text-lg font-bold">¿Cómo funciona?</h3>
+            <h3 className="text-lg font-bold">{c["registro.stepsTitle"]}</h3>
             <ol className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>
-                <span className="font-bold text-[#5f8bff]">1.</span> Envía tu
-                inscripción.
-              </li>
-              <li>
-                <span className="font-bold text-[#5f8bff]">2.</span> Te
-                contactamos con la fecha y hora.
-              </li>
-              <li>
-                <span className="font-bold text-[#5f8bff]">3.</span> Asiste al
-                Try Out con tu equipo.
-              </li>
-              <li>
-                <span className="font-bold text-[#5f8bff]">4.</span> Recibe la
-                evaluación de los entrenadores.
-              </li>
+              {stepsItems.map((step, i) => (
+                <li key={i}>
+                  <span className="font-bold text-[#5f8bff]">{i + 1}.</span>{" "}
+                  {step}
+                </li>
+              ))}
             </ol>
           </div>
         </div>

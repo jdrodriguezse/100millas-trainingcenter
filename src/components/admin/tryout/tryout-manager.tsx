@@ -146,11 +146,18 @@ export function TryoutManager({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-900">Try Out</h1>
-        <p className="text-sm text-slate-500">
-          Inscripciones recibidas desde la página pública.
-        </p>
+      <div className="flex items-center gap-3">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#e11d2e] to-[#ff4a55] text-white shadow-lg shadow-[#e11d2e]/20">
+          <Trophy className="h-6 w-6" />
+        </div>
+        <div>
+          <h1 className="font-heading text-2xl font-semibold uppercase tracking-tight text-slate-900">
+            Try Out
+          </h1>
+          <p className="text-sm text-slate-500">
+            Inscripciones recibidas desde la página pública.
+          </p>
+        </div>
       </div>
 
       <Card>

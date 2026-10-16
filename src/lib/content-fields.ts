@@ -15,7 +15,37 @@ export const CONTENT_GROUPS = [
   "Programas",
   "Sección Try Out",
   "Contacto y redes",
+  "Panel de registro",
 ] as const;
+
+export type ContentTab = {
+  id: string;
+  label: string;
+  description: string;
+  groups: (typeof CONTENT_GROUPS)[number][];
+};
+
+export const CONTENT_TABS: ContentTab[] = [
+  {
+    id: "portal",
+    label: "Portal principal",
+    description: "Edita todo el texto de la página principal del portal.",
+    groups: [
+      "Sección principal",
+      "Cifras destacadas",
+      "Programas",
+      "Sección Try Out",
+      "Contacto y redes",
+    ],
+  },
+  {
+    id: "registro",
+    label: "Panel de registro",
+    description:
+      "Edita todo el texto de la página de inscripción (Try Out), sin incluir el formulario.",
+    groups: ["Panel de registro"],
+  },
+];
 
 export const CONTENT_FIELDS: ContentField[] = [
   // Hero
@@ -329,6 +359,97 @@ export const CONTENT_FIELDS: ContentField[] = [
     type: "text",
     default: "100 Millas Training Center",
     group: "Contacto y redes",
+  },
+
+  // Panel de registro (página pública de inscripción / Try Out)
+  {
+    key: "registro.badge",
+    label: "Etiqueta superior",
+    type: "text",
+    default: "Inscripciones abiertas",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.title",
+    label: "Título principal",
+    type: "text",
+    default: "Participa en nuestro Try Out",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.subtitle",
+    label: "Descripción",
+    type: "textarea",
+    default:
+      "Completa el formulario y asegura tu lugar. Nuestro equipo de entrenadores evaluará tu velocidad, mecánica y fundamentos.",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.date",
+    label: "Fecha destacada",
+    type: "text",
+    default: "Próxima fecha por confirmar",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.place",
+    label: "Lugar",
+    type: "text",
+    default: "Nuestras instalaciones",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.slots",
+    label: "Cupos",
+    type: "text",
+    default: "Cupos limitados",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.formTitle",
+    label: "Título del formulario",
+    type: "text",
+    default: "Formulario de inscripción",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.formNote",
+    label: "Nota del formulario",
+    type: "text",
+    default: "Los campos marcados con * son obligatorios.",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.evalTitle",
+    label: "Título del panel lateral",
+    type: "text",
+    default: "¿Qué evaluamos?",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.evalItems",
+    label: "Ítems de evaluación",
+    type: "textarea",
+    default:
+      "Velocidad de pitcheo (MPH) y mecánica.\nControl y comando en la zona de strike.\nDefensa y fundamentos de la posición.\nBateo: contacto y poder.\nActitud, disciplina y potencial.",
+    group: "Panel de registro",
+    help: "Escribe un ítem por línea. Cada línea se mostrará como un punto de la lista.",
+  },
+  {
+    key: "registro.stepsTitle",
+    label: "Título de ¿Cómo funciona?",
+    type: "text",
+    default: "¿Cómo funciona?",
+    group: "Panel de registro",
+  },
+  {
+    key: "registro.stepsItems",
+    label: "Pasos del proceso",
+    type: "textarea",
+    default:
+      "Envía tu inscripción.\nTe contactamos con la fecha y hora.\nAsiste al Try Out con tu equipo.\nRecibe la evaluación de los entrenadores.",
+    group: "Panel de registro",
+    help: "Escribe un paso por línea. Se numerarán automáticamente.",
   },
 ];
 

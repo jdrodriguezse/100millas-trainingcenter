@@ -243,14 +243,24 @@ export function UsersManager({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900">Usuarios</h1>
-          <p className="text-sm text-slate-500">
-            Administra las cuentas y sus roles.
-          </p>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2b5cff] to-[#5f8bff] text-white shadow-lg shadow-[#2b5cff]/20">
+            <Users className="h-6 w-6" />
+          </div>
+          <div>
+            <h1 className="font-heading text-2xl font-semibold uppercase tracking-tight text-slate-900">
+              Usuarios
+            </h1>
+            <p className="text-sm text-slate-500">
+              Administra las cuentas y sus roles.
+            </p>
+          </div>
         </div>
-        <Button onClick={openCreate}>
+        <Button
+          onClick={openCreate}
+          className="bg-gradient-to-r from-[#2b5cff] to-[#e11d2e] text-white shadow-lg shadow-[#2b5cff]/20 hover:opacity-95"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Nuevo usuario
         </Button>

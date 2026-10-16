@@ -19,13 +19,19 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100">
-      <AdminSidebar user={session.user} />
-      <div className="flex flex-1 flex-col">
-        <AdminHeader user={session.user} />
-        <main className="flex-1 p-6">
-          <div className="mx-auto max-w-6xl animate-fade-up">{children}</div>
-        </main>
+    <div className="admin-panel-bg min-h-screen bg-[#f6f7fb]">
+      <div className="flex min-h-screen">
+        <AdminSidebar user={session.user} />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <AdminHeader user={session.user} />
+          <main className="flex-1 px-4 py-6 sm:px-6">
+            <div className="mx-auto max-w-6xl">{children}</div>
+          </main>
+          <footer className="border-t border-slate-200/70 px-6 py-4 text-center text-xs text-slate-400">
+            © {new Date().getFullYear()} 100 Millas Training Center · Panel de
+            administración
+          </footer>
+        </div>
       </div>
     </div>
   );
