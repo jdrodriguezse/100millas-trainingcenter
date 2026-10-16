@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
@@ -19,6 +19,13 @@ export const metadata: Metadata = {
   title: "100 Millas Training Center",
   description:
     "Sistema web de gestión para la academia de béisbol 100 Millas Training Center",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#04060e",
 };
 
 export default function RootLayout({

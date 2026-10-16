@@ -39,7 +39,7 @@ export default async function Home() {
   }));
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden font-sans text-white">
+    <main className="relative min-h-dvh overflow-x-hidden font-sans text-white">
       {/* FONDO DEL PORTAL (imagen FONDO) */}
       <div className="fixed inset-0 -z-10">
         <div
@@ -52,7 +52,7 @@ export default async function Home() {
       <LandingNav />
 
       {/* HERO */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+      <section className="relative flex min-h-dvh items-center justify-center overflow-hidden pt-16">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/fondo.jpg')" }}
@@ -72,7 +72,7 @@ export default async function Home() {
             {c["hero.badge"]}
           </span>
 
-          <h1 className="animate-fade-up font-heading text-5xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+          <h1 className="animate-fade-up font-heading text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
             {c["hero.titlePrefix"]}{" "}
             <span className="text-gradient-fire">{c["hero.titleHighlight"]}</span>
           </h1>
@@ -91,7 +91,7 @@ export default async function Home() {
           >
             <Link
               href="/tryout"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#e11d2e] to-[#ff4a55] px-9 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_40px_-8px_rgba(225,29,46,0.9)] transition-transform duration-300 hover:scale-[1.04] hover:shadow-[0_0_60px_-6px_rgba(255,74,85,1)]"
+              className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#e11d2e] to-[#ff4a55] px-9 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_40px_-8px_rgba(225,29,46,0.9)] transition-transform duration-300 hover:scale-[1.04] hover:shadow-[0_0_60px_-6px_rgba(255,74,85,1)] sm:w-auto"
             >
               <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
               <Trophy className="h-5 w-5" />
@@ -100,7 +100,7 @@ export default async function Home() {
             </Link>
             <a
               href="#programas"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/40 hover:bg-white/10"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/40 hover:bg-white/10 sm:w-auto"
             >
               {c["hero.ctaSecondary"]}
             </a>
@@ -205,7 +205,7 @@ export default async function Home() {
 
           <Link
             href="/tryout"
-            className="group relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#e11d2e] to-[#ff4a55] px-10 py-5 text-base font-bold uppercase tracking-wider text-white shadow-[0_0_50px_-8px_rgba(225,29,46,0.95)] transition-transform duration-300 hover:scale-[1.05]"
+            className="group relative mt-10 inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[#e11d2e] to-[#ff4a55] px-10 py-5 text-base font-bold uppercase tracking-wider text-white shadow-[0_0_50px_-8px_rgba(225,29,46,0.95)] transition-transform duration-300 hover:scale-[1.05] sm:w-auto"
           >
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
             <Flame className="h-6 w-6" />

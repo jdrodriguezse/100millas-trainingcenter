@@ -11,18 +11,19 @@ export const metadata = {
 
 export default function TryoutPage() {
   return (
-    <main className="min-h-screen bg-[#04060e] text-white">
+    <main className="min-h-dvh bg-[#04060e] text-white">
       {/* NAVBAR */}
       <header className="border-b border-white/5 bg-[#04060e]/70 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white/95 p-1.5 shadow-lg">
+            <div className="relative">
+              <div className="absolute inset-0 scale-150 rounded-full bg-[#2b5cff]/35 blur-lg" />
               <Image
                 src="/logo_empresa.png"
                 alt="100 Millas Training Center"
                 width={44}
                 height={44}
-                className="h-full w-full object-contain"
+                className="relative h-11 w-11 object-contain drop-shadow-lg"
               />
             </div>
             <div className="leading-tight">

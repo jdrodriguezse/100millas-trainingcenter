@@ -35,17 +35,15 @@ export function LandingNav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="group flex items-center gap-3">
           <div className="relative">
-            <div className="absolute inset-0 scale-110 rounded-full bg-[#2b5cff]/40 blur-md transition-opacity duration-500 group-hover:opacity-100 opacity-0" />
-            <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white/95 p-1.5 shadow-lg ring-1 ring-white/20">
-              <Image
-                src="/logo_empresa.png"
-                alt="100 Millas Training Center"
-                width={44}
-                height={44}
-                className="h-full w-full object-contain"
-                priority
-              />
-            </div>
+            <div className="absolute inset-0 scale-150 rounded-full bg-[#2b5cff]/40 blur-lg transition-opacity duration-500 group-hover:opacity-100 opacity-70" />
+            <Image
+              src="/logo_empresa.png"
+              alt="100 Millas Training Center"
+              width={44}
+              height={44}
+              className="relative h-11 w-11 object-contain drop-shadow-lg"
+              priority
+            />
           </div>
           <div className="leading-tight">
             <p className="font-heading text-base font-semibold tracking-wide">

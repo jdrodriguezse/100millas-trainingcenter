@@ -57,3 +57,6 @@ dev.err.log
 
 # original source assets (no se versionan; usar las versiones optimizadas en /public)
 /FONDO.jfif
+
+.vercel
+.env*

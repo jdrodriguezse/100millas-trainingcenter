@@ -19,10 +19,12 @@ import {
 const initialState: TryoutActionState = { success: false, message: "" };
 
 const fieldClass =
-  "border-white/15 bg-white/5 text-white placeholder:text-slate-500";
+  "h-12 border-white/15 bg-white/5 text-base text-white placeholder:text-slate-500 md:text-base";
+const textareaClass =
+  "border-white/15 bg-white/5 text-base text-white placeholder:text-slate-500 md:text-base";
 const labelClass = "text-slate-200";
 const selectClass =
-  "flex h-9 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-1 text-sm text-white outline-none focus:border-[#5f8bff] focus:ring-1 focus:ring-[#5f8bff]";
+  "flex h-12 w-full rounded-lg border border-white/15 bg-white/5 px-3 text-base text-white outline-none focus:border-[#5f8bff] focus:ring-1 focus:ring-[#5f8bff]";
 
 function calculateAge(value: string): number | null {
   if (!value) return null;
@@ -203,7 +205,7 @@ export function TryoutForm() {
               rows={2}
               placeholder="Calle, número, sector, ciudad"
               required
-              className={fieldClass}
+              className={textareaClass}
             />
           </div>
         </div>
@@ -268,7 +270,7 @@ export function TryoutForm() {
                 rows={2}
                 placeholder="Calle, número, sector, ciudad"
                 required
-                className={fieldClass}
+                className={textareaClass}
               />
             </div>
           </div>
