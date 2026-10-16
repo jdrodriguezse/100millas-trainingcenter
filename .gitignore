@@ -49,3 +49,8 @@ next-env.d.ts
 .claude
 .cursor
 .devin
+
+# dev server logs
+dev.log
+dev.err.log
+.devserver.pid
