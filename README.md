@@ -102,9 +102,10 @@ git push -u origin main
 1. Entra a [https://vercel.com](https://vercel.com) e inicia sesión con GitHub.
 2. **Add New → Project** y selecciona el repositorio.
 3. En **Environment Variables** agrega:
-   - `DATABASE_URL` = tu cadena de conexión de Neon
+   - `DATABASE_URL` = tu cadena de conexión de Neon (usa la **pooled**)
    - `AUTH_SECRET` = tu secreto seguro
    - `AUTH_URL` = `https://tu-dominio.com` (o la URL de Vercel)
+   - `AUTH_TRUST_HOST` = `true`
 4. Presiona **Deploy**.
 
 ### Paso 4: Crear las tablas en producción
@@ -125,7 +126,8 @@ npm run db:push
 
 ## Actualizaciones (deploys)
 
-Cada vez que hagas cambios:
+Cada vez que hagas cambios, se ejecuta una **verificación de calidad** (typecheck +
+lint + build) antes de subir. Si algo falla, el push se cancela automáticamente.
 
 ```bash
 git add .
@@ -133,7 +135,25 @@ git commit -m "Descripción del cambio"
 git push
 ```
 
-Vercel detecta el push y **despliega automáticamente** en 1-2 minutos.
+Al subir, GitHub Actions vuelve a verificar y Vercel **despliega automáticamente**
+en 1-2 minutos. Si la verificación falla, el deploy no llega a producción.
+
+### Verificación automática (garantía antes de subir)
+
+Este proyecto incluye dos barreras para que **nada roto llegue al servidor**:
+
+1. **Hook local `pre-push`** (`.githooks/pre-push`): antes de cada `git push`
+   ejecuta `npm run check`. Si falla, el push se cancela.
+   - Se activa con: `git config core.hooksPath .githooks`
+   - Para saltarlo en una emergencia: `git push --no-verify`
+2. **GitHub Actions** (`.github/workflows/ci.yml`): en cada push/PR a `main`
+   corre typecheck + lint + build en la nube.
+
+### Forzar la verificación manualmente
+
+```bash
+npm run check
+```
 
 ---
 
@@ -145,7 +165,10 @@ Vercel detecta el push y **despliega automáticamente** en 1-2 minutos.
 | `npm run build` | Compilar para producción |
 | `npm run start` | Iniciar la versión compilada |
 | `npm run lint` | Revisar el código |
+| `npm run typecheck` | Verificar tipos de TypeScript |
+| `npm run check` | Verificación completa (typecheck + lint + build) |
 | `npm run db:push` | Aplicar el esquema a la base de datos |
+| `npm run db:seed` | Crear el administrador inicial |
 | `npm run db:studio` | Abrir Prisma Studio (ver datos) |
 
 ---

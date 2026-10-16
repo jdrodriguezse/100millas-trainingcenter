@@ -1,0 +1,41 @@
+name: CI (Calidad)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  quality:
+    name: Typecheck, Lint y Build
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://user:password@localhost:5432/db?schema=public"
+      AUTH_SECRET: "ci-secret-no-usar-en-produccion"
+      AUTH_TRUST_HOST: "true"
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar Prisma Client
+        run: npx prisma generate
+
+      - name: Verificar tipos (TypeScript)
+        run: npm run typecheck
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Build de produccion
+        run: npm run build

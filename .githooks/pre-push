@@ -1,0 +1,22 @@
+#!/bin/sh
+# Verificacion automatica antes de cada push.
+# Bloquea la subida si falla el typecheck, el lint o el build.
+# Para saltar la verificacion (usar con responsabilidad): git push --no-verify
+
+echo ""
+echo ">>> Verificando calidad del codigo antes de subir a GitHub..."
+echo "    (typecheck + lint + build). Esto puede tardar un momento."
+echo ""
+
+if npm run check; then
+  echo ""
+  echo ">>> Verificacion OK. Subiendo cambios..."
+  echo ""
+  exit 0
+else
+  echo ""
+  echo ">>> La verificacion FALLO. Push cancelado."
+  echo "    Corrige los errores o usa 'git push --no-verify' para forzar."
+  echo ""
+  exit 1
+fi
