@@ -33,3 +33,30 @@ model User {
 
   role Role @relation(fields: [roleId], references: [id])
 }
+
+model TryoutRegistration {
+  id             String   @id @default(cuid())
+  fullName       String
+  cedula         String
+  birthPlace     String
+  birthDate      DateTime
+  age            Int?
+  phone          String
+  phoneAlt       String?
+  address        String
+  educationLevel String
+  email          String
+  isMinor        Boolean  @default(false)
+  repName        String?
+  repCedula      String?
+  repPhone       String?
+  repAddress     String?
+  status         String   @default("PENDIENTE")
+  createdAt      DateTime @default(now())
+}
+
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}

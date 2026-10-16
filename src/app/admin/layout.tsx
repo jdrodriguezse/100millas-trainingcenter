@@ -19,11 +19,13 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-100">
+    <div className="flex min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100">
       <AdminSidebar user={session.user} />
       <div className="flex flex-1 flex-col">
         <AdminHeader user={session.user} />
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex-1 p-6">
+          <div className="mx-auto max-w-6xl animate-fade-up">{children}</div>
+        </main>
       </div>
     </div>
   );
